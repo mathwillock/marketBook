@@ -15,4 +15,11 @@ class BookService(
 
     fun getBooksById(id: Int) = bookRepository.findById(id)
 
+    fun updateBook(id: Int, book: BookModel) =
+        if(!bookRepository.existsById(id)) throw Exception()
+        else bookRepository.save(book)
+
+    fun deleteBook(id: Int) =
+        if(!bookRepository.existsById(id)) throw Exception()
+        else bookRepository.deleteById(id)
 }
